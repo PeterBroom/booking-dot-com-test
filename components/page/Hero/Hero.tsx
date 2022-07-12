@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { CheckIcon } from '@heroicons/react/solid'
-import Search from './Search'
+import { Search } from '@/components/page'
 import s from './Hero.module.scss'
-export default function Hero() {
+
+export default function Hero() {  
   return (
     <div className={s.hero}>
       <div className={s.imageWrapper}>
