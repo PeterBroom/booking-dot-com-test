@@ -1,0 +1,8 @@
+.header {
+    @apply bg-primary w-full;
+    padding: $dp*4 0;
+}
+
+.container {
+    @extend %container;
+}

@@ -1,0 +1,42 @@
+.footer {
+}
+
+.container {
+    @extend %container;
+    padding: $dp*4 0;
+}
+
+.nav {
+    @apply bg-primary;
+}
+
+.list {
+    @extend %container;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 10px;
+    text-align: center;
+}
+
+.list__item {
+    @apply text-sm;
+    color: #FFFFFF;
+
+}
+
+.list__link {
+    color: #FFFFFF;
+}
+
+.content {
+    @extend %container;
+    padding-top: $dp*8;
+}
+
+.legal {
+    @extend %container;
+    text-align: center;
+    padding-top: $dp*8;
+    padding-bottom: $dp*8;
+}
