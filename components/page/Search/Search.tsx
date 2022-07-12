@@ -1,25 +1,30 @@
 import { useContext } from 'react'
 import { SearchContext } from '@/context/SearchContext'
+import debounce from '@/utils/debounce'
 import s from './Search.module.scss'
 
 export default function Search() {
-    const { getSearchResults } = useContext(SearchContext);
+    const { getSearchResults, setSearchResults } = useContext(SearchContext);
 
-    function debounce<Params extends any[]>(
-        func: (...args: Params) => any,
-        timeout: number,
-    ): (...args: Params) => void {
-        let timer: ReturnType<typeof setTimeout>;
-        return (...args: Params) => {
-            clearTimeout(timer)
-            timer = setTimeout(() => {
-                func(...args)
-            }, timeout)
-        }
-    }
+    // function debounce<Params extends any[]>(
+    //     func: (...args: Params) => any,
+    //     timeout: number,
+    // ): (...args: Params) => void {
+    //     let timer: ReturnType<typeof setTimeout>;
+    //     return (...args: Params) => {
+    //         clearTimeout(timer)
+    //         timer = setTimeout(() => {
+    //             func(...args)
+    //         }, timeout)
+    //     }
+    // }
 
     function populateSearch(value: string) {
-        getSearchResults(value);
+        if (value.length >= 2) {
+            getSearchResults(value);
+        } else {
+            setSearchResults(null)
+        }
     }
 
     const handler = debounce(populateSearch, 500);
