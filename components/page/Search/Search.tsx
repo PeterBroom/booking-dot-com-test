@@ -1,3 +1,9 @@
+/**
+ * Takes a value from an input field and queries API
+ * @event onChange invokes debounce utility to throttle the requests
+ * @param value of search input returns a location
+ * @returns a location for API endpoint in the search context provider
+ */
 import { useContext } from 'react'
 import { SearchContext } from '@/context/SearchContext'
 import debounce from '@/utils/debounce'
@@ -14,6 +20,7 @@ export default function Search() {
         }
     }
 
+    // on change debounce populateSearch function
     const handler = debounce(populateSearch, 500);
 
     return (
