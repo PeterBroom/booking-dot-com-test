@@ -17,6 +17,7 @@ export default function SearchProvider({ children }: any) {
     <SearchContext.Provider
       value={{
         searchResults,
+        setSearchResults,
         getSearchResults
       }}
     >
