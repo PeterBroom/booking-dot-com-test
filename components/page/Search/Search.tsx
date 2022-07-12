@@ -6,19 +6,6 @@ import s from './Search.module.scss'
 export default function Search() {
     const { getSearchResults, setSearchResults } = useContext(SearchContext);
 
-    // function debounce<Params extends any[]>(
-    //     func: (...args: Params) => any,
-    //     timeout: number,
-    // ): (...args: Params) => void {
-    //     let timer: ReturnType<typeof setTimeout>;
-    //     return (...args: Params) => {
-    //         clearTimeout(timer)
-    //         timer = setTimeout(() => {
-    //             func(...args)
-    //         }, timeout)
-    //     }
-    // }
-
     function populateSearch(value: string) {
         if (value.length >= 2) {
             getSearchResults(value);
