@@ -1,15 +1,29 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { SearchContext } from '@/context/SearchContext'
 import s from './Search.module.scss'
 
 export default function Search() {
+    const { getSearchResults } = useContext(SearchContext);
 
-    function handler(e: any) {
-        getSearchResults(e);
+    function debounce<Params extends any[]>(
+        func: (...args: Params) => any,
+        timeout: number,
+    ): (...args: Params) => void {
+        let timer: ReturnType<typeof setTimeout>;
+        return (...args: Params) => {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                func(...args)
+            }, timeout)
+        }
     }
 
-    const { getSearchResults } = useContext(SearchContext);
-    
+    function populateSearch(value: string) {
+        getSearchResults(value);
+    }
+
+    const handler = debounce(populateSearch, 500);
+
     return (
         <div className={s.search}>
             <h2 className={s.header}>Let&apos;s find your ideal car</h2>
