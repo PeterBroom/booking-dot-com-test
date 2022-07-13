@@ -1,26 +1,27 @@
-import { useContext, useState, useRef } from 'react'
+import { useContext, useState,  useEffect, useRef } from 'react'
 import { SearchContext } from '@/context/SearchContext'
 import s from './Results.module.scss'
 
 export default function ResultsItem(props: any) {
-    const {result, i, searchInputRef} = props.item;
-
+    const {result, i, cursor, searchInputRef, setSelected} = props.item;
     const itemRef = useRef(i)
-
     const { setSearchResults } = useContext(SearchContext);
 
     function selectHandler(result: any) {
         searchInputRef.value = result
+
         focus();
         setSearchResults(null)
     }
 
     function blur(){
         itemRef.current.blur();
+        // setSelected(-1)
     }
 
     function focus() {
         itemRef.current.focus();
+        setSelected(result)
     }
 
     const PlaceType = ({placetype}:any) => {
@@ -66,11 +67,13 @@ export default function ResultsItem(props: any) {
             className={s.resultItem} 
             id={`result-options-${i}`} 
             role="option" 
-            aria-selected={false} 
-            tabIndex={i}
+            aria-selected={i === cursor ? true : false} 
+            onClick={() => setSelected(result)}
+            // onMouseEnter={() => setHovered(result)}
+            // onMouseLeave={() => setHovered(undefined)}
         >
             <button
-                className={s.resultAction} 
+                className={`${s.resultAction} ${i === cursor ? s.active : ''}`} 
                 onClick={() => selectHandler(result.name)}
                 onFocus={() => focus()}
                 onBlur={() => blur()}
