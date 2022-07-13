@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Hero, Header, Footer } from '@/components/page'
 
 export default function Home() {
@@ -13,7 +12,7 @@ export default function Home() {
 
       <Header/>
       <main>
-        <Hero/>
+        <Hero />
       </main>
       <Footer/>
     </div>
