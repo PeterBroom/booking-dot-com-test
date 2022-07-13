@@ -7,8 +7,7 @@ export default function SearchProvider({ children }: any) {
   const [searchResults, setSearchResults] = useState(null)
 
   async function getSearchResults(location: string) {
-    console.log('api param', location)
-    axios.post("/api/search/" + location).then((res) => {
+    axios.post(`/api/search/${location}`).then((res) => {
       setSearchResults(res.data.docs)
     })
   }
