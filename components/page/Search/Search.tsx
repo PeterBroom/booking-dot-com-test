@@ -4,13 +4,15 @@
  * @param value of search input returns a location
  * @returns a location for API endpoint in the search context provider
  */
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { SearchContext } from '@/context/SearchContext'
+import { Results } from '@/components/page'
 import debounce from '@/utils/debounce'
 import s from './Search.module.scss'
 
 export default function Search() {
     const { getSearchResults, setSearchResults } = useContext(SearchContext);
+    const searchInputRef = useRef(null);
 
     function populateSearch(value: string) {
         if (value.length >= 2) {
@@ -34,11 +36,15 @@ export default function Search() {
                 className="border-none focus:outline-none focus:ring-2 focus:ring-black/25 rounded-sm mr-6"
                 placeholder="Pick-up Location"
                 onChange={(e) => handler(e.target.value)}
+                autoComplete="off"
+                ref={searchInputRef}
             />
             <button
                 className="border-none bg-emerald-600 text-white rounded-sm p-2 mr-6 focus:outline-none focus:bg-emerald-800"
                 type="submit"
             >Search</button>
+
+            <Results searchInputRef={searchInputRef.current} />
         </div>
     )
 }
