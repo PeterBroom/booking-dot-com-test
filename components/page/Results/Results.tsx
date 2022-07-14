@@ -26,9 +26,9 @@ export default function Results({ searchInputRef }: any) {
   }, [upPress, searchResults]);
 
   return (
-    <>
+    <div className={s.resultsContainer}>
       {searchResults &&
-        <ul aria-labelledby="result-options" className={s.results}>
+        <ul aria-labelledby="result-options" className={s.results} data-test-results>
           {searchResults.map((result: any, i: number) => (
             <ResultsItem
               key={`result=${i}`}
@@ -37,6 +37,6 @@ export default function Results({ searchInputRef }: any) {
           ))}
         </ul>
       }
-    </>
+    </div>
   )
 }

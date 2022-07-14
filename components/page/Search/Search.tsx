@@ -4,7 +4,7 @@
  * @param value of search input returns a location
  * @returns a location for API endpoint in the search context provider
  */
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { SearchContext } from '@/context/SearchContext'
 import { Results } from '@/components/page'
 import debounce from '@/utils/debounce'
@@ -16,10 +16,17 @@ export default function Search() {
     const searchInputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null)
 
+    const placeHolderText = "Pick-up Location"
+    const [placeholderString, setPlaceholderString] = useState<string>(placeHolderText)
+    const [showResults, setShowResults] = useState<boolean>(false)
+
+
     function populateSearch(value: string) {
         if (value.length >= 2) {
+            setShowResults(true)
             getSearchResults(value);
         } else {
+            setShowResults(false)
             setSearchResults(null)
         }
     }
@@ -27,20 +34,23 @@ export default function Search() {
     const handler = debounce(populateSearch, 500);
 
     return (
-        <div className={s.searchComponent}>
+        <div className={s.searchComponent} data-test-search-container>
             <h2 className={s.heading}>Let&apos;s find your ideal car</h2>
             <div className={s.search} ref={containerRef}>
-                <label htmlFor="searchInput" className="sr-only">Pick-up Location</label>
+                <label htmlFor="searchInput" className="sr-only" data-test-search-label>Pick-up Location</label>
                 <div className={s.formGroup}>
                 <SearchIcon className={s.icon}/>
                 <input
+                    data-test-search-input
                     tabIndex={1}
                     className={s.searchInput}
                     name="searchInput"
                     id="searchInput"
                     type="text"
-                    placeholder="Pick-up Location"
+                    placeholder={placeholderString}
                     onChange={(e) => handler(e.target.value)}
+                    onFocus={() => setPlaceholderString('')}
+                    onBlur={() => setPlaceholderString(placeHolderText)}
                     autoComplete="off"
                     ref={searchInputRef}
                 />
@@ -77,7 +87,9 @@ export default function Search() {
                     className={s.searchAction}
                     type="submit"
                 >Search</button>
+                {showResults &&
                 <Results searchInputRef={searchInputRef} tabIndex={2} />
+                }
             </div>
 
             <div className={s.dropOffLocation}>
