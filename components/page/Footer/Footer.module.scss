@@ -13,20 +13,26 @@
 .list {
     @extend %container;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     gap: 10px;
-    text-align: center;
+    text-align: left;
+
+
+    @media(min-width: $bp-large) {
+        flex-direction: row;
+        text-align: center;
+    }
 }
 
 .list__item {
     @apply text-sm;
-    color: #FFFFFF;
+    color: $color-white;
 
 }
 
 .list__link {
-    color: #FFFFFF;
+    color: $color-white;
 }
 
 .content {
