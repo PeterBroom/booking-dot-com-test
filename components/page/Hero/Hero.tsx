@@ -10,9 +10,9 @@ export default function Hero() {
         <div className={s.container}>
           <h1 className={s.heading}>Car Hire - Search, Compare &amp; Save</h1>
           <ul className={s.list}>
-            <li className={s.list__item} ><CheckIcon className={s.icon} /> Free cancellations on most bookings</li>
-            <li className={s.list__item} ><CheckIcon className={s.icon} /> 60,000+ locations</li>
-            <li className={s.list__item} ><CheckIcon className={s.icon} /> Customer support in 40+ languages</li>
+            <li className={s.listItem} ><CheckIcon className={s.icon} /> Free cancellations on most bookings</li>
+            <li className={s.listItem} ><CheckIcon className={s.icon} /> 60,000+ locations</li>
+            <li className={s.listItem} ><CheckIcon className={s.icon} /> Customer support in 40+ languages</li>
           </ul>
           <div className={s.heroSearch}>
             <Search />
