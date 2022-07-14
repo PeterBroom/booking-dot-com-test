@@ -1,0 +1,15 @@
+
+$font-family-heading: "Avenir Next","BlinkMacSystemFont","-apple-system,Segoe UI","Roboto","Helvetica","Arial",sans-serif;
+$font-family-body: "BlinkMacSystemFont","-apple-system","Segoe UI","Roboto","Helvetica","Arial",sans-serif;
+
+.global {
+    h1, h2, h3, h4 {
+        font-family: $font-family-heading;
+    }
+}
+
+.global {
+    p, li, button, a {
+       font-family: $font-family-body;
+    }
+}
