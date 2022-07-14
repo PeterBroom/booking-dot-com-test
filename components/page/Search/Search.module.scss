@@ -24,7 +24,6 @@
 }
 
 .search {
-    order: 2;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -38,7 +37,6 @@
     @media (min-width: $bp-large) {
         flex-wrap: nowrap;
         flex-direction: row;
-        order: 1;
     }
 }
 
@@ -47,7 +45,6 @@
     font-weight: 700;
     margin-bottom: $dp*2;
     color: $color-black;
-    order: 0;
     // @extend .sr-only;
 }
 
@@ -123,19 +120,28 @@
     }
 }
 
+.carOptions {
+    display: flex;
+    flex-direction: row;
+    gap: $dp*4;
+}
+
 .dropOffLocation {
-    order: 1;
-    margin-bottom: $dp*2;
+    display: none;
     @media (min-width: $bp-large) {
-        display: inline-block;
-        order: 2;
+        display: block;
     }
 }
 
-.driverAge {
-    order: 3;
+.dropOffLocationMobile {
+    display: block;
+    margin-bottom: $dp*2;
+    @media (min-width: $bp-large) {
+        display: none;
+    }
 }
 
+.dropOffLocationMobile,
 .dropOffLocation,
 .driverAge {
 

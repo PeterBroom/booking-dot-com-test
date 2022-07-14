@@ -29,6 +29,12 @@ export default function Search() {
     return (
         <div className={s.searchComponent}>
             <h2 className={s.heading}>Let&apos;s find your ideal car</h2>
+            <div className={s.dropOffLocationMobile}>
+                <label htmlFor="v">
+                    <input name="dropOffLocationMobile" id="dropOffLocationMobile" className={s.checkbox} type="checkbox" />
+                    Drop car off at different location
+                </label>
+            </div>
             <div className={s.search} ref={containerRef}>
                 <label htmlFor="searchInput" className="sr-only">Pick-up Location</label>
                 <div className={s.formGroup}>
@@ -80,18 +86,20 @@ export default function Search() {
                 <Results searchInputRef={searchInputRef} tabIndex={2} />
             </div>
 
-            <div className={s.dropOffLocation}>
-                <label htmlFor="dropOffLocation">
-                    <input name="dropOffLocation" id="dropOffLocation" className={s.checkbox} type="checkbox" />
-                    Drop car off at different location
-                </label>
+            <div className={s.carOptions}>
+                <div className={s.dropOffLocation}>
+                    <label htmlFor="dropOffLocation">
+                        <input name="dropOffLocation" id="dropOffLocation" className={s.checkbox} type="checkbox" />
+                        Drop car off at different location
+                    </label>
+                </div>
+                <div className={s.driverAge}>
+                    <label htmlFor="driverAge">
+                        <input name="driverAge" id="driverAge" className={s.checkbox} type="checkbox" />
+                        Driver aged 30 - 65?
+                    </label>
+                </div>        
             </div>
-            <div className={s.driverAge}>
-                <label htmlFor="driverAge">
-                    <input name="driverAge" id="driverAge" className={s.checkbox} type="checkbox" />
-                    Driver aged 30 - 65?
-                </label>
-            </div>        
         </div>
     )
 }

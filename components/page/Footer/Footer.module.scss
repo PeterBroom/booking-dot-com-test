@@ -1,4 +1,5 @@
 .footer {
+    font-family: $font-family-body;
 }
 
 .container {
@@ -7,7 +8,8 @@
 }
 
 .nav {
-    @apply bg-primary;
+    background-color: $color-primary;
+    padding: $dp*6 $dp;
 }
 
 .list {
@@ -25,19 +27,24 @@
     }
 }
 
-.list__item {
+.listItem {
     @apply text-sm;
     color: $color-white;
 
 }
 
-.list__link {
+.listIink {
     color: $color-white;
 }
 
 .content {
     @extend %container;
     padding-top: $dp*8;
+
+    p {
+        margin-bottom: $dp*2;
+        font-size: 0.9rem;
+    }
 }
 
 .legal {
@@ -45,4 +52,8 @@
     text-align: center;
     padding-top: $dp*8;
     padding-bottom: $dp*8;
+
+    p {
+        font-size: 0.9rem;
+    }
 }

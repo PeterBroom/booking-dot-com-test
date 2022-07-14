@@ -13,6 +13,8 @@ export default function Home() {
       <Header/>
       <main>
         <Hero />
+
+        <div style={{height: '400px'}}/>
       </main>
       <Footer/>
     </div>

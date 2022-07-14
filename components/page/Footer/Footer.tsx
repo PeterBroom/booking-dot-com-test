@@ -20,8 +20,8 @@ export default function Footer() {
         <nav className={s.nav}>
           <ul className={s.list}>
             {footerLinks && footerLinks.map((item, i) => (
-              <li key={i} className={s.list__item}>
-                <Link className={s.list__link} href={item.link}>
+              <li key={i} className={s.listItem}>
+                <Link className={s.listIink} href={item.link}>
                   <a>{item.text}</a>
                 </Link>
               </li>
