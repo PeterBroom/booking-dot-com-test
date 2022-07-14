@@ -1,8 +1,150 @@
-.search {
-    position: relative;
-    @apply bg-secondary p-2 rounded-md mb-10 text-black;
+%input {
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: $dp;
+    padding: $dp*4;
+    width: 100%;
+    background-color: $color-white;
+    color: $color-black;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($color-black, 0.25);
+    }
 }
 
-.header {
-    @apply text-lg font-bold mb-2
+.searchComponent {
+    border-radius: $dp*2;
+    padding: $dp*2;
+    background-color: $color-secondary;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    order: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    margin-bottom: $dp*2;
+
+    row-gap: $dp*2;
+    gap: $dp*2;
+
+    @media (min-width: $bp-large) {
+        flex-wrap: nowrap;
+        flex-direction: row;
+        order: 1;
+    }
+}
+
+.heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: $dp*2;
+    color: $color-black;
+    order: 0;
+    // @extend .sr-only;
+}
+
+.formGroup {
+    flex-shrink: 3;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: $dp*2;
+}
+
+.formGroupDate {
+    @extend .formGroup;
+    @media (min-width: $bp-large) {
+        max-width: 260px;
+    }
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: $dp*2;
+    transform: translateY(-50%);
+    width: $dp*4;
+    height: $dp*4;
+    color: $color-black;
+}
+
+.searchInput {
+    @extend %input;
+    padding-left: $dp*8;
+    @media (min-width: $bp-large) {
+        min-width: 450px;
+    }
+}
+
+.dateInput {
+    @extend %input;
+    padding-left: $dp*8;
+    width: 80%;
+    @media (min-width: $bp-large) {
+        width: 60%;
+    }
+}
+.timeInput {
+    @extend %input;
+    padding-left: $dp*8;
+    width: 20%;
+    @media (min-width: $bp-large) {
+        width: 40%;
+    }
+}
+
+.searchAction {
+    @extend %input;
+    font-family: $font-family-heading;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background-color: $color-green;
+    color: $color-white;
+    transition: background-color 300ms ease-in-out;
+
+    &:focus {
+        box-shadow: none;
+    }
+    &:focus,
+    &:hover {
+        background-color: darken($color-green, 5%);
+    }
+
+    @media (min-width: $bp-large) {
+        max-width: 20%;
+    }
+}
+
+.dropOffLocation {
+    order: 1;
+    margin-bottom: $dp*2;
+    @media (min-width: $bp-large) {
+        display: inline-block;
+        order: 2;
+    }
+}
+
+.driverAge {
+    order: 3;
+}
+
+.dropOffLocation,
+.driverAge {
+
+    label {
+        color: $color-black;
+    }
+    input {
+        @apply appearance-none checked:bg-primary focus:ring-0;
+        border-radius: $dp;
+        margin-right: $dp*2;
+    }
 }
