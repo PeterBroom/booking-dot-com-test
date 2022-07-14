@@ -1,66 +1,41 @@
-import { useContext, useState,  useEffect, useRef } from 'react'
+import { useContext, useRef, useEffect } from 'react'
 import { SearchContext } from '@/context/SearchContext'
+import useOutsideClick from "@/utils/useOutsideClick";
+import { PlaceType } from './Placetype';
 import s from './Results.module.scss'
 
 export default function ResultsItem(props: any) {
-    const {result, i, cursor, searchInputRef, setSelected} = props.item;
+    const {result, i, cursor, setCursor, searchInputRef, setSelected} = props.item;
     const itemRef = useRef(i)
-    const { setSearchResults } = useContext(SearchContext);
+    const { setSearchResults, searchResults } = useContext(SearchContext);
+
+    useEffect(()=>{
+        if (itemRef && itemRef.current && cursor === i) {
+            itemRef.current.focus()
+        }
+    },[cursor, i])
 
     function selectHandler(result: any) {
-        searchInputRef.value = result
-
+        searchInputRef.current.value = result
         focus();
+        setCursor(0)
         setSearchResults(null)
-    }
-
-    function blur(){
-        itemRef.current.blur();
-        // setSelected(-1)
     }
 
     function focus() {
         itemRef.current.focus();
+        console.log(`cursor ${cursor}`)
         setSelected(result)
     }
 
-    const PlaceType = ({placetype}:any) => {
-        let text: string;
-        let colour: string;
-        let contrast: string;
-        switch (placetype){
-            case 'A':
-                colour = '#ff8000'
-                contrast = '#262626'
-                text = 'Airport';
-                break;
-            case 'C':
-                colour = '#0071c2'
-                contrast = '#FFFFFF'
-                text = 'City';
-                break;
-            case 'T':
-                colour = '#474747'
-                contrast = '#FFFFFF'
-                text = 'Station';
-                break;
-            case 'D':
-                colour = '#008009'
-                contrast = '#FFFFFF'
-                text = 'District';
-                break;
-            default:
-                colour = '#CCC'
-                contrast = '#262626'
-                text = ''
-                break
+    // If user clicks outside of search container hide results and choose first result
+    useOutsideClick(itemRef, () => {
+        const first = itemRef !== null ? searchResults[0].name : '';
+        setSearchResults(null) // resets all results
+        if (searchInputRef && searchInputRef.current) {
+            searchInputRef.current.value = first
         }
-        return (
-            <div className={s.placeType}>
-                <span style={{'backgroundColor': colour, 'color': contrast}}>{text}</span>
-            </div>
-        )
-    }
+    });
 
     return (
         <li 
@@ -68,15 +43,12 @@ export default function ResultsItem(props: any) {
             id={`result-options-${i}`} 
             role="option" 
             aria-selected={i === cursor ? true : false} 
-            onClick={() => setSelected(result)}
-            // onMouseEnter={() => setHovered(result)}
-            // onMouseLeave={() => setHovered(undefined)}
+
         >
             <button
+                tabIndex={i}
                 className={`${s.resultAction} ${i === cursor ? s.active : ''}`} 
                 onClick={() => selectHandler(result.name)}
-                onFocus={() => focus()}
-                onBlur={() => blur()}
                 ref={itemRef}
             >
                 {result.name !== 'No results found' &&
