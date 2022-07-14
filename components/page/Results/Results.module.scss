@@ -31,15 +31,12 @@
         background-color: #F1F1F1;
     }
     &:hover {
-        background-color: #CCCCCC;
-        &:focus {
-            background-color: #CCCCCC;
-        }
+        background-color: #F1F1F1;
     }
 
     &:focus {
         outline: none;
-        background-color: #E1E1E1;
+        background-color: #F1F1F1;
     }
 }
 
