@@ -1,8 +1,67 @@
 .header {
     @apply bg-primary w-full;
-    padding: $dp*4 0;
+    padding: $dp*3 0;
 }
 
 .container {
     @extend %container;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+%action {
+    padding: $dp;
+    color: $color-white;
+    border-radius: $dp;
+    font-size: 0.6;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+}
+.logo {
+    margin-top: $dp;
+}
+.settings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $dp*3;
+}
+
+.currency,
+.location {
+    @extend %action;
+}
+
+.currency {
+    font-size: 0.8rem;
+    padding: $dp*3 $dp;
+}
+
+.location {
+    img {
+        border-radius: 50%;
+    }
+}
+
+.manage {
+    padding: $dp*2 $dp*4;
+    background-color: $color-white;
+    border-radius: $dp;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: $color-primary;
+
+    outline: none;
+
+    transition: background-color 200ms ease-in-out;
+
+    &:focus,
+    &:hover {
+        background-color: rgba(255,255,255,0.9);
+    }
 }
