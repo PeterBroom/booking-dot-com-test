@@ -56,7 +56,7 @@ export default function ResultsItem(props: any) {
                 }
 
                 <div className={s.content}>
-                    <div className={s.heading}>
+                    <div className={s.heading} data-test-results-heading>
                         {result.name}
                         {result.iata && ` (${result.iata})`}
                     </div>
