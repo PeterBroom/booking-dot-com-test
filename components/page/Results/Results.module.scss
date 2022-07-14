@@ -2,7 +2,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #FFFFFF;
+    background-color: $color-white;
     border-radius: $dp*2;
     width: 100%;
 
@@ -23,27 +23,30 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: $dp*6;
-    padding: $dp*4;
+    padding: $dp*3 $dp*4;
     text-align: left;
     align-items: center;
 
     &.active {
         background-color: #F1F1F1;
     }
+    &:hover {
+        background-color: #CCCCCC;
+        &:focus {
+            background-color: #CCCCCC;
+        }
+    }
 
     &:focus {
         outline: none;
-        background-color: #F1F1F1;
+        background-color: #E1E1E1;
     }
-    &:hover {
-        background-color: #F1F1F1;
-    }
-
 }
 
 .content {
     display: flex;
     flex-direction: column;
+    color: $color-black;
 }
 
 .heading {
