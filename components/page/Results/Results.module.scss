@@ -6,6 +6,8 @@
     border-radius: $dp*2;
     width: 100%;
 
+    margin-top: $dp*2;
+
     box-shadow: 0 $dp*2 $dp*4 rgba(0,0,0,0.1);
 
     @media (min-width: $bp-large) {
@@ -30,13 +32,12 @@
     &.active {
         background-color: #F1F1F1;
     }
-    &:hover {
-        background-color: #F1F1F1;
-    }
+    // &:hover {
+    //     background-color: #F1F1F1;
+    // }
 
     &:focus {
         outline: none;
-        background-color: #F1F1F1;
     }
 }
 

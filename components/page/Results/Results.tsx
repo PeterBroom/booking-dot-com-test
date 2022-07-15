@@ -10,11 +10,20 @@ export default function Results({ searchInputRef }: any) {
   const upPress = useKeyPress("ArrowUp");
   const [selected, setSelected] = useState(0);
   const [cursor, setCursor] = useState(0);
+  const [focused, setFocused] = useState<boolean>(false)
+
 
   // Use down arrow to iterate list
   useEffect(() => {
     if (searchResults && searchResults.length && downPress) {
       setCursor(prevState => (prevState < searchResults.length - 1 ? prevState + 1 : prevState));
+      setFocused(true)
+
+      // prevent arrow keys scrolling document
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        document.body.style.overflow = 'unset';
+      }, 10);
     }
   }, [downPress, searchResults]);
 
@@ -22,6 +31,13 @@ export default function Results({ searchInputRef }: any) {
   useEffect(() => {
     if (searchResults && searchResults.length && upPress) {
       setCursor(prevState => (prevState > 0 ? prevState - 1 : prevState));
+      setFocused(true)
+
+      // prevent arrow keys scrolling document
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        document.body.style.overflow = 'unset';
+      }, 10);
     }
   }, [upPress, searchResults]);
 
@@ -32,7 +48,7 @@ export default function Results({ searchInputRef }: any) {
           {searchResults.map((result: any, i: number) => (
             <ResultsItem
               key={`result=${i}`}
-              item={{ result, i, cursor, setCursor, searchInputRef, selected, setSelected }}
+              item={{ result, i, cursor, setCursor, searchInputRef, selected, setSelected, focused, setFocused }}
             />
           ))}
         </ul>
