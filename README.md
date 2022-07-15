@@ -63,8 +63,8 @@ The idea with Tailwind is that you can use it within your css/scss or simply use
 For purpose of this project Tailwind has been used lightly for simple styling of form elements for example along side scss.
 
 ## Testing
-For testing this project uses [Cypress](https://www.cypress.io/) which is a test runner that uses Mocha and Chai. Writting tests is simple for developers but also testers can contribute without having prerequisite coding knowledge.
+For testing this project uses [Cypress](https://www.cypress.io/) which is a test runner that uses Mocha and Chai.
 
-To see the end-to-end test simply use `yarn cypress open`. You will see the Cypress App open up and which kind of test you would like to see. This project has an e2e test that I have written. To see it click 'E@E Testing' and select which browser you would like to launch the test in.
+To see the end-to-end test simply use `yarn cypress open`. You will see the Cypress App open up and which kind of test you would like to see. This project has an e2e test that I have written. To see it click 'E2E Testing' and select which browser you would like to launch the test in.
 
 Now you will see a file to be tested named `spec.cy.ts`. Once you click it the test will be performed. You can trace back over each part of the test to see the requests, responses and DOM snapshots with before and after states.
