@@ -37,7 +37,7 @@ export default function Search() {
         <div className={s.searchComponent} data-test-search-container>
             <h2 className={s.heading}>Let&apos;s find your ideal car</h2>
             <div className={s.dropOffLocationMobile}>
-                <label htmlFor="v">
+                <label htmlFor="dropOffLocationMobile">
                     <input name="dropOffLocationMobile" id="dropOffLocationMobile" className={s.checkbox} type="checkbox" />
                     Drop car off at different location
                 </label>
